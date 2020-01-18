@@ -1,4 +1,4 @@
-package ch.fuchsnet.spring;
+package ch.fuchsnet.bitbucket;
 
 import com.atlassian.bitbucket.auth.ExpiredAuthenticationException;
 import com.atlassian.bitbucket.auth.HttpAuthenticationContext;
@@ -18,6 +18,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /*
+
+Thanks and credits go to Christian Fuchs
+https://github.com/Fuchs/bitbucket-remote-user-sso
+
 Remote User Single Sign On Authenticator russo-bitbucket: 
 Authenticating to BitBucket Server with the X_Forwarded_User HTTP header
 Copyright (C) 2014  Christian Loosli
@@ -41,9 +45,9 @@ public class RussoBitBucketAuthenticationHandler implements
 	private static final String strKeyContainerAuthName = "auth.container.remote-user";
     private static final Logger log = LoggerFactory.getLogger(RussoBitBucketAuthenticationHandler.class);
 
-	// Header we read. Has to be lowercase even if the header is set uppercase
-	// in apache
-	private static final String strHeaderName = "x-forwarded-user";
+	// Header we read. Has to be lowercase even if the header is set uppercase in apache
+	//private static final String strHeaderName = "x-forwarded-user";
+	private static final String strHeaderName = "x-rp-usr";
 
 	// Print additional information and warnings, useful when developing, else
 	// it just spams the logs a bit.
